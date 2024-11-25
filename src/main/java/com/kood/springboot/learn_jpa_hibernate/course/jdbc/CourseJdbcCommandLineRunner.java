@@ -18,6 +18,11 @@ public class CourseJdbcCommandLineRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         jdbcRepo.insert(new Course(1, "Learn Spring", "Kood"));
+        jdbcRepo.insert(new Course(2, "Learn DevOps", "Medo"));
+        jdbcRepo.insert(new Course(3, "Learn Graphic", "soha"));
+        jdbcRepo.deleteById(2);
+        jdbcRepo.findByID(1);
+        System.out.println(jdbcRepo.findAll());
     }
 //    @RequestMapping("/courses")
 //    public List<CourseJdbcRepo> retrieveAllCourses(){
