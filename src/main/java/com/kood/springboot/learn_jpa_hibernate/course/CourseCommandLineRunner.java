@@ -1,7 +1,7 @@
 package com.kood.springboot.learn_jpa_hibernate.course;
 
-import com.kood.springboot.learn_jpa_hibernate.course.Jpa_Repo.CourseJpaRepository;
-import com.kood.springboot.learn_jpa_hibernate.course.jdbc.CourseJdbcRepo;
+import com.kood.springboot.learn_jpa_hibernate.course.jpa.CourseJpaRepository;
+import com.kood.springboot.learn_jpa_hibernate.course.spring_jpa.CourseSpringDataJpaRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -10,8 +10,11 @@ import org.springframework.stereotype.Component;
 public class CourseCommandLineRunner implements CommandLineRunner {
 //    @Autowired
 //    CourseJdbcRepo jdbcRepo;
+//    @Autowired
+//    CourseJpaRepository jpaRepo;
     @Autowired
-    CourseJpaRepository jpaRepo;
+    CourseSpringDataJpaRepo springDataJpaRepo;
+
 
     @Override
     public void run(String... args) throws Exception {
@@ -23,12 +26,23 @@ public class CourseCommandLineRunner implements CommandLineRunner {
 //        jdbcRepo.findByID(1);
 //        System.out.println(jdbcRepo.findAll());
         /* jpa */
-        jpaRepo.insert(new Course(1, "Learn Spring", "Kood"));
-        jpaRepo.insert(new Course(2, "Learn DevOps", "Medo"));
-        jpaRepo.insert(new Course(3, "Learn Graphic", "soha"));
-        jpaRepo.deleteById(2);
-        System.out.println(jpaRepo.findById(1));
-        System.out.println(jpaRepo.findById(3));
+//        jpaRepo.insert(new Course(1, "Learn Spring", "Kood"));
+//        jpaRepo.insert(new Course(2, "Learn DevOps", "Medo"));
+//        jpaRepo.insert(new Course(3, "Learn Graphic", "soha"));
+//        jpaRepo.deleteById(2);
+//        System.out.println(jpaRepo.findById(1));
+//        System.out.println(jpaRepo.findById(3));
+        /* spring jpa */
+        springDataJpaRepo.save(new Course(1, "Learn Spring", "Kood"));
+        springDataJpaRepo.save(new Course(2, "Learn DevOps", "Medo"));
+        springDataJpaRepo.save(new Course(3, "Learn Graphic", "soha"));
+        springDataJpaRepo.deleteById(2L);
+        System.out.println(springDataJpaRepo.findById(1L));
+        System.out.println(springDataJpaRepo.findById(3L));
+        System.out.println(springDataJpaRepo.findAll());
+        System.out.println(springDataJpaRepo.count());
+        System.out.println(springDataJpaRepo.findByAuthor("Kood"));
+        System.out.println(springDataJpaRepo.findByName("Learn Graphic"));
     }
 //    @RequestMapping("/courses")
 //    public List<CourseJdbcRepo> retrieveAllCourses(){

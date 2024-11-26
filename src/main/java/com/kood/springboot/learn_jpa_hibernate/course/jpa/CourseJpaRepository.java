@@ -1,13 +1,10 @@
-package com.kood.springboot.learn_jpa_hibernate.course.Jpa_Repo;
+package com.kood.springboot.learn_jpa_hibernate.course.jpa;
 
 import com.kood.springboot.learn_jpa_hibernate.course.Course;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.PersistenceContextType;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 @Repository
 @Transactional
